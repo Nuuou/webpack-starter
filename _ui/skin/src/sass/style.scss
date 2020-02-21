@@ -1,0 +1,13 @@
+body {
+  background: red;
+}
+
+h3 {
+  background: cornflowerblue;
+}
+
+p {
+  transform: rotate(180deg);
+}
+
+@import '~@/js/components/app';

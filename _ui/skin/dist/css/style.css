@@ -1,0 +1,32 @@
+body {
+  background: red;
+}
+
+h3 {
+  background: cornflowerblue;
+}
+
+p {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.testing {
+  position: relative;
+  background-image: url(../img/components/test_nested.png);
+}
+
+.testing:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-image: url(../img/test_nested.png);
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+
+
+
+/*# sourceMappingURL=style.css.map*/
