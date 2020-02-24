@@ -2,6 +2,7 @@ const path = require('path');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -131,6 +132,9 @@ module.exports = {
       filename: 'css/[name].css',
     }),
     new IgnoreEmitPlugin(['style.js']),
+    new StylelintPlugin({
+      fix: true,
+    }),
     new FriendlyErrorsWebpackPlugin(),
     // new BrowserSyncPlugin({
     //   injectCss: true,

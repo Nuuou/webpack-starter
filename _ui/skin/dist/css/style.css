@@ -1,6 +1,6 @@
-body { background: bique; }
+body { background: bisque; }
 
-h3 { background: red; }
+h3 { background: blue; display: none; -webkit-box-orient: horizontal; -webkit-box-direction: normal; flex-direction: row; margin: 0; background: none; }
 
 p { -webkit-transform: rotate(180deg); transform: rotate(180deg); }
 

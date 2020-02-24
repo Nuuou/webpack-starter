@@ -1,13 +1,32 @@
+@mixin thing {
+  @content;
+}
+
+@mixin what {
+  background: blue;
+}
+
 body {
-  background: bique;
+  background: bisque;
 }
 
 h3 {
-  background: red;
+  @include what();
+  display: none;
+  flex-direction: row;
+  margin: 0;
+
+  @include thing() {
+    background: none;
+  }
 }
 
 p {
   transform: rotate(180deg);
+
+  &:after {
+    content: '';
+  }
 }
 
 @import '~@/js/components/app';
