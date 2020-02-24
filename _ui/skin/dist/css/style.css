@@ -1,32 +1,12 @@
-body {
-  background: red;
-}
+body { background: bique; }
 
-h3 {
-  background: cornflowerblue;
-}
+h3 { background: red; }
 
-p {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
+p { -webkit-transform: rotate(180deg); transform: rotate(180deg); }
 
-.testing {
-  position: relative;
-  background-image: url(../img/components/test_nested.png);
-}
+.testing { position: relative; background-image: url(../img/components/test_nested.png); }
 
-.testing:after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background-image: url(../img/test_nested.png);
-  -webkit-transform: rotate(20deg);
-          transform: rotate(20deg);
-}
-
+.testing:after { content: ''; display: none; position: absolute; width: 200px; height: 200px; background-image: url(../img/test_nested.png); -webkit-transform: rotate(20deg); transform: rotate(20deg); }
 
 
 /*# sourceMappingURL=style.css.map*/

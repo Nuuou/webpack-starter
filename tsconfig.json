@@ -8,6 +8,11 @@
       "checkJs": false,
       "sourceMap": true,
       "moduleResolution": "node",
-      "strict": true
-  }
+      "isolatedModules": true,
+      "esModuleInterop": true,
+      "strict": true,
+      "outDir": "_ui/skin/dist",
+  },
+  "exclude": ["node_modules"],
+  "include": ["_ui/skin/src"]
 }

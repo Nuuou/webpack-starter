@@ -54,6 +54,9 @@ const sassRules = {
   use: [
     {
       loader: ExtractCssChunks.loader,
+      options: {
+        hmr: process.env.NODE_ENV === 'development',
+      },
     },
     {
       loader: 'css-loader',
@@ -87,8 +90,8 @@ const sassRules = {
 
 module.exports = {
   entry: {
-    main: './_ui/skin/src/js/main.js',
     style: './_ui/skin/src/sass/style.scss',
+    main: './_ui/skin/src/js/main.js',
     testthing: './_ui/skin/src/js/testthing.tsx',
   },
   output: {
@@ -132,15 +135,15 @@ module.exports = {
     }),
     new IgnoreEmitPlugin(['style.js']),
     new FriendlyErrorsWebpackPlugin(),
-    // new BrowserSyncPlugin({
-    //   injectCss: true,
-    //   notify: true,
-    //   port: 8081,
-    //   proxy: 'localhost:8080',
-    //   files: [
-    //     '_ui/skin/dist/**/*',
-    //   ],
-    // }),
+    new BrowserSyncPlugin({
+      injectCss: true,
+      notify: true,
+      port: 8081,
+      proxy: 'localhost:8080',
+      files: [
+        '_ui/skin/dist/**/*',
+      ],
+    }),
     // TODO: Clean Webpack is being overzealous, removing too much randomly.
     //new CleanWebpackPlugin(),
   ],

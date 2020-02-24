@@ -172,7 +172,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["render"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ts_components_TsApp__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('ts-app'));
+Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["render"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ts_components_TsApp__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  test: "okay",
+  whowhat: 5
+}), document.getElementById('ts-app'));
 
 /***/ }),
 
@@ -185,11 +188,57 @@ Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["render"])(react__WEBPACK_IMPORTED
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.join */ "./node_modules/core-js/modules/es.array.join.js");
+/* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.string.split */ "./node_modules/core-js/modules/es.string.split.js");
+/* harmony import */ var core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_corejs3_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs3/helpers/slicedToArray */ "./node_modules/@babel/runtime-corejs3/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_corejs3_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs3_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_corejs3_core_js_instance_reverse__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs3/core-js/instance/reverse */ "./node_modules/@babel/runtime-corejs3/core-js/instance/reverse.js");
+/* harmony import */ var _babel_runtime_corejs3_core_js_instance_reverse__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs3_core_js_instance_reverse__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 
-/* harmony default export */ __webpack_exports__["default"] = (function () {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Wow, that is neeeaasdfasdaaat dude!"));
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var _context;
+
+  var test = _ref.test,
+      whowhat = _ref.whowhat;
+  var modified = test === null || test === void 0 ? void 0 : _babel_runtime_corejs3_core_js_instance_reverse__WEBPACK_IMPORTED_MODULE_4___default()(_context = test.split('')).call(_context).join('');
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_5__["useState"])(0),
+      _useState2 = _babel_runtime_corejs3_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3___default()(_useState, 2),
+      number = _useState2[0],
+      numberCallback = _useState2[1];
+
+  var toggleBodyClass = function toggleBodyClass() {
+    var bodyEl = document.body;
+
+    if (bodyEl.classList.contains('thingy')) {
+      bodyEl.classList.remove('thingy');
+    } else {
+      bodyEl.classList.add('thingy');
+    }
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "coolthing"
+  }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, "Wow, ", modified, " is neat dude", whowhat, "!"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, number), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+    type: "button",
+    onClick: function onClick() {
+      return numberCallback(number + 1);
+    }
+  }, "Increment!"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+    type: "button",
+    onClick: toggleBodyClass
+  }, "Toggle Body Class"));
 });
 
 /***/ })
