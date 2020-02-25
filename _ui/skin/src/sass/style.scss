@@ -22,8 +22,6 @@ h3 {
 }
 
 p {
-  transform: rotate(180deg);
-
   &:after {
     content: '';
   }

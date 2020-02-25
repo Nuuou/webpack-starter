@@ -1,12 +1,12 @@
+const webpack = require('webpack');
 const path = require('path');
+const getPort = require('get-port');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
-// TODO: Remove this. const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const imgRules = {
   test: /\.(png|jpe?g|gif|webp)$/,
@@ -86,21 +86,32 @@ const sassRules = {
   ],
 };
 
-module.exports = {
+const devServer = {
+  enabled: false,
+  port: 9000,
+};
+const browserSync = {
+  enabled: true,
+  port: 9000,
+  host: 'localhost:8080',
+};
+
+
+const webpackConfig = {
   entry: {
     main: './_ui/skin/src/js/main.js',
     style: './_ui/skin/src/sass/style.scss',
     testthing: './_ui/skin/src/js/testthing.tsx',
-  },
-  output: {
-    path: path.resolve('_ui/skin/dist'),
-    filename: 'js/[name].js',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       '@': path.resolve('./_ui/skin/src/'),
     },
+  },
+  output: {
+    path: path.resolve('_ui/skin/dist'),
+    filename: 'js/[name].js',
   },
   optimization: {
     chunkIds: 'named',
@@ -128,6 +139,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.ProgressPlugin(),
     new ExtractCssChunks({
       filename: 'css/[name].css',
     }),
@@ -136,17 +148,6 @@ module.exports = {
       fix: true,
     }),
     new FriendlyErrorsWebpackPlugin(),
-    // new BrowserSyncPlugin({
-    //   injectCss: true,
-    //   notify: true,
-    //   port: 8081,
-    //   proxy: 'localhost:8080',
-    //   files: [
-    //     '_ui/skin/dist/**/*',
-    //   ],
-    // }),
-    // TODO: Clean Webpack is being overzealous, removing too much randomly.
-    //new CleanWebpackPlugin(),
   ],
   devtool: 'source-map',
   stats: {
@@ -154,3 +155,47 @@ module.exports = {
     builtAt: true,
   },
 };
+
+if (devServer.enabled) {
+  webpackConfig.devServer = {
+    contentBase: path.resolve('.'),
+    host: 'localhost',
+    port: devServer.port,
+    publicPath: `http://localhost:${devServer.port}/_ui/skin/dist`,
+    historyApiFallback: true,
+    hot: true,
+  };
+}
+
+module.exports = (async () => {
+  const port = await getPort({
+    port: getPort.makeRange(3005, 3100),
+  });
+
+  if (browserSync.enabled) {
+    webpackConfig.plugins.push(
+      new BrowserSyncPlugin({
+        port,
+        injectCss: true,
+        notify: true,
+        proxy: browserSync.host,
+        files: [
+          '_ui/skin/dist/**/*',
+        ],
+      }),
+    );
+  }
+
+  if (devServer.enabled) {
+    webpackConfig.devServer = {
+      port,
+      contentBase: path.resolve('.'),
+      host: 'localhost',
+      publicPath: `http://localhost:${port}/_ui/skin/dist`,
+      historyApiFallback: true,
+      hot: true,
+    };
+  }
+
+  return webpackConfig;
+});

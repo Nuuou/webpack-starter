@@ -230,7 +230,7 @@ __webpack_require__.r(__webpack_exports__);
 
   return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
     className: "coolthing"
-  }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, "Wow, ", modified, " is neat dude", whowhat, "!"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, number), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+  }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, "wow!, ", modified, " is neat dude", whowhat, "!"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, number), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
     type: "button",
     onClick: function onClick() {
       return numberCallback(number + 1);

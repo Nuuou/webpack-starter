@@ -20,7 +20,7 @@ export default function ({ test, whowhat } : ITsAppProps) {
 
   return (
     <div className="coolthing">
-      <p>Wow, {modified} is neat dude{whowhat}!</p>
+      <p>wow!, {modified} is neat dude{whowhat}!</p>
       <p>{number}</p>
       <button type="button" onClick={() => numberCallback(number + 1)}>Increment!</button>
       <button type="button" onClick={toggleBodyClass}>Toggle Body Class</button>

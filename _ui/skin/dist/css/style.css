@@ -2,7 +2,7 @@ body { background: bisque; }
 
 h3 { background: blue; display: none; -webkit-box-orient: horizontal; -webkit-box-direction: normal; flex-direction: row; margin: 0; background: none; }
 
-p { -webkit-transform: rotate(180deg); transform: rotate(180deg); }
+p:after { content: ''; }
 
 .testing { position: relative; background-image: url(../img/components/test_nested.png); }
 

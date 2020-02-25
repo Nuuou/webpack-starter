@@ -12,6 +12,10 @@
       "esModuleInterop": true,
       "strict": true,
       "outDir": "_ui/skin/dist",
+      "baseUrl": "./",
+      "paths": {
+        "@/*": ["_ui/skin/src/*"],
+      }
   },
   "exclude": ["node_modules"],
   "include": ["_ui/skin/src"]
