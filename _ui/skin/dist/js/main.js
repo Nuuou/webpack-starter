@@ -198,7 +198,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "testing"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hello there! dudeeee"));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hello there friend! dudeeee"));
 });
 
 /***/ }),

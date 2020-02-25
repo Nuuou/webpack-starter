@@ -176,12 +176,14 @@ module.exports = (async () => {
     webpackConfig.plugins.push(
       new BrowserSyncPlugin({
         port,
-        injectCss: true,
         notify: true,
         proxy: browserSync.host,
         files: [
           '_ui/skin/dist/**/*',
         ],
+      }, {
+        injectCss: true,
+        //reload: false,
       }),
     );
   }
