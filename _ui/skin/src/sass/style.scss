@@ -22,6 +22,9 @@ h3 {
 }
 
 p {
+  font-weight: bold;
+  text-transform: uppercase;
+
   &:after {
     content: '';
   }

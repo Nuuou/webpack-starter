@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const getPort = require('get-port');
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -54,7 +54,7 @@ const sassRules = {
   test: /\.(sa|sc|c)ss$/,
   use: [
     {
-      loader: ExtractCssChunks.loader,
+      loader: MiniCssExtractPlugin.loader,
     },
     {
       loader: 'css-loader',
@@ -140,10 +140,10 @@ const webpackConfig = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    new ExtractCssChunks({
+    new FixStyleOnlyEntriesPlugin(),
+    new MiniCssExtractPlugin({
       filename: 'css/[name].css',
     }),
-    new IgnoreEmitPlugin(['style.js']),
     new StylelintPlugin({
       fix: true,
     }),
@@ -176,12 +176,14 @@ module.exports = (async () => {
     webpackConfig.plugins.push(
       new BrowserSyncPlugin({
         port,
-        injectCss: true,
         notify: true,
         proxy: browserSync.host,
         files: [
           '_ui/skin/dist/**/*',
         ],
+      }, {
+        injectCss: true,
+        reload: false,
       }),
     );
   }
