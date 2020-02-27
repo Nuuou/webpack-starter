@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const getPort = require('get-port');
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
@@ -54,7 +55,7 @@ const sassRules = {
   test: /\.(sa|sc|c)ss$/,
   use: [
     {
-      loader: ExtractCssChunks.loader,
+      loader: MiniCssExtractPlugin.loader,
     },
     {
       loader: 'css-loader',
@@ -99,9 +100,8 @@ const browserSync = {
 
 const webpackConfig = {
   entry: {
-    main: './_ui/skin/src/js/main.js',
-    style: './_ui/skin/src/sass/style.scss',
-    testthing: './_ui/skin/src/js/testthing.tsx',
+    main: './_ui/skin/src/js/main.tsx',
+    style: './_ui/skin/src/js/main.scss',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -140,10 +140,10 @@ const webpackConfig = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    new ExtractCssChunks({
+    new FixStyleOnlyEntriesPlugin(),
+    new MiniCssExtractPlugin({
       filename: 'css/[name].css',
     }),
-    new IgnoreEmitPlugin(['style.js']),
     new StylelintPlugin({
       fix: true,
     }),
@@ -183,7 +183,7 @@ module.exports = (async () => {
         ],
       }, {
         injectCss: true,
-        //reload: false,
+        reload: false,
       }),
     );
   }

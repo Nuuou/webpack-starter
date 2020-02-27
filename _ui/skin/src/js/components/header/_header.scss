@@ -1,0 +1,39 @@
+.site-header {
+  background: bisque;
+
+  &__container {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 10px;
+
+    @include respond-to(md) {
+      padding: 0 20px;
+    }
+    @include respond-to(lg) {
+      padding: 0 30px;
+    }
+  }
+  &__search {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    top: 100%;
+    left: 0;
+
+    @include respond-to(md) {
+      position: relative;
+      width: auto;
+      top: auto;
+      left: auto;
+    }
+  }
+}
